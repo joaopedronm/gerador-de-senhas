@@ -11,11 +11,10 @@ const ModalPassword = ({password, handleClose}) => {
 
     async function handleCopyPassword() {
         await Clipboard.setStringAsync(password)
-        
+
         await saveItem("@pass", password)
+        
         alert("Senha salva com sucesso!")
-
-
         handleClose()
     }
 
@@ -36,7 +35,7 @@ const ModalPassword = ({password, handleClose}) => {
                         <Text style={styles.buttonText}>Voltar</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={[styles.button, styles.buttonSave]}>
+                    <TouchableOpacity style={[styles.button, styles.buttonSave]} onPress={handleCopyPassword}>
                         <Text style={[styles.buttonText, {color: '#fff'}]}>Salvar Senha</Text>
                     </TouchableOpacity>
                 </View>

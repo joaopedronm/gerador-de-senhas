@@ -16,7 +16,7 @@ const useStorage = () => {
     const saveItem = async(key, value) => {
         try {
             let passwords = await getItem(key)
-            passwords.push()
+            passwords.push(value)
             await AsyncStorage.setItem(key, JSON.stringify(passwords))
 
         } catch (error) {
@@ -31,7 +31,7 @@ const useStorage = () => {
             let myPasswords = passwords.filter((password) => {
                 return(password !== item)
             })
-            
+
             await AsyncStorage.setItem(key, JSON.stringify(myPasswords))
             return myPasswords
         } catch (error) {
